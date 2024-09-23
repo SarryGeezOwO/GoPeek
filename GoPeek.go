@@ -53,17 +53,18 @@ func main() {
 	fmt.Println("  --> Methods Found:")
 	for _, val := range methodList {
 		var modifier string
-		firstRune, _ := utf8.DecodeRuneInString(val) // First Character in a String
-
-		if unicode.IsLower(firstRune) {
+		
+		if isFuncPrivate(val) {
 			modifier = "-- Private | Unexported"
 		}else {
 			modifier = "-- Public  | Exported"
 		}
+		
 		fmt.Printf("        > %-25s %s\n", val, modifier)
 	}
 }
 
+// Returns the absolute path of a given source Go File
 func findGoFile(dir string, targetFile string) (file string) {
 
 	// Find The first instance of GO file
@@ -115,9 +116,7 @@ func getCommentCount(filePath string) (count int) {
 		}
 	}
 
-	if(count > 0) {
-		count--;
-	}
+
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
@@ -169,4 +168,14 @@ func getMethodList(filePath string) (methods []string) {
 		return true
 	})
 	return
+}
+
+// Returns true if the function is private false otherwise
+func isFuncPrivate(method string) (bool) {
+	firstRune, _ := utf8.DecodeRuneInString(method) // First Character in a String
+	if unicode.IsLower(firstRune) {
+		return true
+	}else {
+		return false
+	}	
 }

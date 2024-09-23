@@ -22,6 +22,9 @@ import (
 		Methods (exported/unexported)
 */
 
+var cliVersion = "1.0.3"
+var githubURL = "https://github.com/SarryGeezOwO/GoPeek"
+
 func main() {
 
 	// Get cmd Arguments
@@ -48,9 +51,14 @@ func main() {
 	var methodList []string = getMethodList(targetFile);
 
 	// Print Out File Details
-	fmt.Printf("\nFile: %s\n  --> Line Count: %d\n", file, lineCount)
-	fmt.Println("  --> Comments:", commentCount)
-	fmt.Println("  --> Methods Found:")
+	fmt.Println("--GoPeek--")
+	fmt.Println("Version:", cliVersion)
+	fmt.Println("Github:", githubURL)
+
+	fmt.Println("\nFile:", file)
+	fmt.Println("   --> Line Count:", lineCount)
+	fmt.Println("   --> Comments:", commentCount)
+	fmt.Println("   --> Methods Found:")
 	for _, val := range methodList {
 		var modifier string
 		
@@ -59,7 +67,7 @@ func main() {
 		}else {
 			modifier = "-- Public  | Exported"
 		}
-		
+
 		fmt.Printf("        > %-25s %s\n", val, modifier)
 	}
 }

@@ -45,6 +45,7 @@ func main() {
 	}
 
 
+	// get all info related to the Go file
 	var file string    		= findGoFile(dir, targetFile);
 	var lineCount int  		= checkLineCount(file);
 	var commentCount int  	= getCommentCount(file);

@@ -1,6 +1,9 @@
 # GoPeek
 A simple CLI for checking the status of a Go file
 
+## Preview
+![Screenshot 2024-10-27 233121](https://github.com/user-attachments/assets/f8533c9b-a2c7-4091-950b-59005fbce6c8)
+
 ## Usage
 
 #### Ensure that the GoPeek.exe is a System Environment Variable
